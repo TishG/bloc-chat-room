@@ -18,7 +18,11 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <RoomList firebase={firebase} />
+        <RoomList
+        firebase={firebase}
+        handleChange={this.handleChange}
+        newRoomName={this.newRoomName}
+        />
       </main>
     );
   }
