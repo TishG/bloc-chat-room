@@ -25,12 +25,10 @@ class RoomList extends Component {
   }
 
   createRoom(room) {
-    const newRoom = this.roomsRef.push({ name: this.state.newRoomName });
-    this.setState({ rooms: newRoom });
+    this.roomsRef.push({ name: this.state.newRoomName });
   }
 
   render() {
-     console.log(this.state.rooms);
     return (
       <main className="room">
         <ul
