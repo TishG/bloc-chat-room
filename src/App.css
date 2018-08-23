@@ -1,8 +1,37 @@
 * {
   list-style-type: none;
+  margin:0;
 }
 
 .room {
-  margin: 1em;
-  font-size: 1.3em;
+  padding: 0.5em;
+  font-size: 1em;
+  float: left;
+  background-color: #ff944d;
+  height: 754px;
+}
+
+.message-room {
+  padding: 0.5em;
+  background-color: #ffb380;
+  height: 754px;
+}
+
+.message-list {
+  background-color: white;
+  color: blue;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 6px;
+}
+
+header {
+  background-color: #ff6600;
+  height: 50px;
+}
+
+h2 {
+  font-size: 1.2em;
 }
