@@ -6,7 +6,6 @@ class RoomList extends Component {
     this.state = {
       rooms: [],
       newRoomName: " ",
-
     };
     // Store a Firebase reference to the rooms path onto the this keyword
     this.roomsRef = this.props.firebase.database().ref("rooms");

@@ -7,13 +7,13 @@
   padding: 0.5em;
   font-size: 1em;
   float: left;
-  background-color: #ff944d;
+  background-color: lightsteelblue;
   height: 754px;
 }
 
 .message-room {
   padding: 0.5em;
-  background-color: #ffb380;
+  background-color: whitesmoke;
   height: 754px;
 }
 
@@ -22,16 +22,20 @@
   color: blue;
 }
 
-h1 {
+.bloc-chat-title {
   text-align: center;
-  padding-top: 6px;
+  margin-bottom: 30px;
 }
 
 header {
-  background-color: #ff6600;
-  height: 50px;
+  background-color: white;
+  height: 80px;
 }
 
 h2 {
   font-size: 1.2em;
+}
+
+.user-login {
+  justify-content:
 }
