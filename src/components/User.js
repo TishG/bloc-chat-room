@@ -4,7 +4,6 @@ class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: " "
     };
   }
 
@@ -25,6 +24,13 @@ class User extends Component {
     this.props.firebase.auth().signOut();
   }
 
+retrieveUsername() {
+ const acct = this.props.GoogleSignIn.getLastSignedInAccount(this.props.getActivity());
+  if (acct != null) {
+    acct.getDisplayName();
+  }
+}
+
     render() {
       return (
         <section className="user-login">
@@ -39,7 +45,7 @@ class User extends Component {
             Sign out
           </button>
           <section className="user-greeting">
-          Hello, {this.props.user ? this.props.user.displayName : " Guest" }
+          Hello, {this.props.user != null ? (e) => this.retrieveUsername() : " Guest" }
           </section>
         </section>
       );
