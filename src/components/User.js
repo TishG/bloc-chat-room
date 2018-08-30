@@ -4,6 +4,7 @@ class User extends Component {
 
   componentDidMount() {
     this.props.firebase.auth().onAuthStateChanged( user => {
+      console.log(user);
     this.props.setUser(user);
    });
   }
@@ -32,7 +33,7 @@ class User extends Component {
             Sign out
           </button>
           <section className="user-greeting">
-          Hello, { this.props.user ? this.props.user.displayName : " Guest" }
+            Welcome, { this.props.user ? this.props.user.displayName : " Guest" }
           </section>
         </section>
       );

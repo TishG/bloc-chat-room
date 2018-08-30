@@ -52,6 +52,7 @@ class App extends Component {
         firebase={firebase}
         activeRoom={this.state.activeRoom}
         user={this.state.user}
+        setUser={(user) => this.setUser(user)}
         />
       </main>
     );
