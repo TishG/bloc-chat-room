@@ -9,17 +9,13 @@ class User extends Component {
   }
 
   signIn() {
-    this.props.firebase.auth().signInWithPopup( new this.props.firebase.auth.GoogleAuthProvider()
-      ).then((result) => {
-          const user = result.user;
-          this.props.setUser(user);
-    });
+    this.props.firebase.auth().signInWithPopup(
+       new this.props.firebase.auth.GoogleAuthProvider()
+     )
   }
 
   signOut() {
-    this.props.firebase.auth().signOut().then(() => {
-      this.props.setUser(null);
-    });
+    this.props.firebase.auth().signOut();
   }
 
     render() {
