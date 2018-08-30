@@ -1,51 +1,42 @@
 import React, { Component } from 'react';
 
 class User extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
 
   componentDidMount() {
     this.props.firebase.auth().onAuthStateChanged( user => {
-    this.props.setUser(this.state.username);
+    this.props.setUser(user);
    });
   }
 
-  signInWithPopup(e) {
-    e.preventDefault();
-    const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.firebase.auth().signInWithPopup( provider );
+  signIn() {
+    this.props.firebase.auth().signInWithPopup( new this.props.firebase.auth.GoogleAuthProvider()
+      ).then((result) => {
+          const user = result.user;
+          this.props.setUser(user);
+    });
   }
 
-  signOut(e) {
-    e.preventDefault();
-    this.props.firebase.auth().signOut();
+  signOut() {
+    this.props.firebase.auth().signOut().then(() => {
+      this.props.setUser(null);
+    });
   }
-
-retrieveUsername() {
- const acct = this.props.GoogleSignIn.getLastSignedInAccount(this.props.getActivity());
-  if (acct != null) {
-    acct.getDisplayName();
-  }
-}
 
     render() {
       return (
         <section className="user-login">
           <button
           className="sign-in"
-          onClick={(e) => this.signInWithPopup(e)}>
+          onClick={(e) => this.signIn()}>
             Sign in
           </button>
           <button
           className="sign-out"
-          onClick={(e) => this.signOut(e)}>
+          onClick={(e) => this.signOut()}>
             Sign out
           </button>
           <section className="user-greeting">
-          Hello, {this.props.user != null ? (e) => this.retrieveUsername() : " Guest" }
+          Hello, { this.props.user ? this.props.user.displayName : " Guest" }
           </section>
         </section>
       );

@@ -21,8 +21,7 @@ class App extends Component {
     super(props);
     this.state = {
       activeRoom: {},
-      user: {},
-      displayName: " "
+      user: {}
     }
   }
 
@@ -30,8 +29,8 @@ class App extends Component {
     this.setState({ activeRoom: room })
   }
 
-  setUser(username) {
-    this.setState({ user: username })
+  setUser(user) {
+    this.setState({ user: user });
   }
 
   render() {
@@ -40,7 +39,8 @@ class App extends Component {
         <header>
         <User
         firebase={firebase}
-        setUser={(username) => this.setUser(username)}
+        setUser={(user) => this.setUser(user)}
+        user={this.state.user}
         />
           <h1 className="bloc-chat-title">Bloc Chat Room</h1>
         </header>
@@ -51,6 +51,7 @@ class App extends Component {
         <MessageList
         firebase={firebase}
         activeRoom={this.state.activeRoom}
+        user={this.state.user}
         />
       </main>
     );

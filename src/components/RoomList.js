@@ -51,7 +51,7 @@ class RoomList extends Component {
                 })
           }
           </ul>
-          <div
+          <section
           className="new-room-form">
              <input type="text"
              value={this.state.newRoomName}
@@ -60,7 +60,7 @@ class RoomList extends Component {
              type="button"
              value="Add Room"
              onClick={(e) => this.createRoom(this.state.newRoomName)}/>
-           </div>
+           </section>
       </main>
     );
   }

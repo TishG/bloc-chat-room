@@ -12,9 +12,9 @@
 }
 
 .message-room {
-  padding: 0.5em;
   background-color: whitesmoke;
-  height: 754px;
+  height: 770px;
+  width: 1351px;
 }
 
 .message-list {
@@ -38,4 +38,8 @@ h2 {
 
 .user-login {
   justify-content:
+}
+
+input.message-text {
+    width: 1032px;
 }

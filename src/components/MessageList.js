@@ -5,7 +5,7 @@ class MessageList extends Component {
       super(props);
       this.messagesRef = this.props.firebase.database().ref("messages");
       this.state = {
-        messages: [],
+        messages: []
       };
     }
 
@@ -16,8 +16,6 @@ class MessageList extends Component {
         this.setState({ messages: this.state.messages.concat( message ) })
       });
     }
-//Associate messages with a room
-
     render() {
       return (
         <main className="message-room">
