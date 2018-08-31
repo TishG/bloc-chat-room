@@ -47,7 +47,7 @@ class MessageList extends Component {
                         key={index}
                         className="user-messages">
                         <p>
-                          { this.props.user ? this.props.user.displayName : " Guest" }
+                          { message.roomId === this.props.activeRoom.key && this.props.user ? this.props.user.displayName : " Guest" }
                         </p>
                           {message.roomId === this.props.activeRoom.key ? message.content: " " }
                        </li>
