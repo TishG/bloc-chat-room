@@ -34,6 +34,14 @@ class MessageList extends Component {
       this.setState({ newContent: input });
     }
 
+    logUsername(user, message) {
+      if( message.roomId === this.props.activeRoom.key && this.props.user ) {
+        return this.props.user.displayName ;
+      } else if ( message.roomId === this.props.activeRoom.key && !this.props.user ) {
+        return " Guest" ;
+      }
+    }
+
     render() {
       return (
         <main className="message-room">
@@ -47,7 +55,7 @@ class MessageList extends Component {
                         key={index}
                         className="user-messages">
                         <p>
-                          { this.props.user ? this.props.user.displayName : " Guest" }
+                          <span>{ this.logUsername(this.props.user, message) }</span>
                         </p>
                           {message.roomId === this.props.activeRoom.key ? message.content: " " }
                        </li>
