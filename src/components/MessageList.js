@@ -20,12 +20,12 @@ class MessageList extends Component {
 
     createMessage(e, newContent) {
         e.preventDefault();
-        if (!this.props.activeRoom || !newContent) { return }
+        if (!this.props.activeRoom || !newContent) { return };
         this.messagesRef.push({
           content: newContent,
           username: this.props.user ? this.props.user.displayName : " Guest",
           roomId: this.props.activeRoom.key,
-          sentAt: Date.now()
+          sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
         });
         this.setState({ newContent: " " })
     }
@@ -47,7 +47,7 @@ class MessageList extends Component {
                         key={index}
                         className="user-messages">
                         <p>
-                          { message.roomId === this.props.activeRoom.key && this.props.user ? this.props.user.displayName : " Guest" }
+                          { this.props.user ? this.props.user.displayName : " Guest" }
                         </p>
                           {message.roomId === this.props.activeRoom.key ? message.content: " " }
                        </li>
