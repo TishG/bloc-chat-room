@@ -5,7 +5,7 @@ class RoomList extends Component {
     super(props);
     this.state = {
       rooms: [],
-      newRoomName: " ",
+      newRoomName: " "
     };
     // Store a Firebase reference to the rooms path onto the this keyword
     this.roomsRef = this.props.firebase.database().ref("rooms");
@@ -32,6 +32,14 @@ class RoomList extends Component {
     this.setState({ newRoomName: " " })
   }
 
+  deleteRoom(roomKey) {
+    const room = this.props.firebase.database().ref("rooms/" + roomKey);
+    const messages = this.props.firebase.database().ref("messages/" + roomKey);
+    room.remove();
+    messages.remove();
+    window.location.reload(true);
+  }
+
   render() {
     return (
       <main className="room">
@@ -46,6 +54,10 @@ class RoomList extends Component {
                          key={index}
                          className="room-name">
                           {room.name}
+                          <button
+                          className="delete-room"
+                          type="button"
+                          onClick={() => this.deleteRoom(room.key)}>delete</button>
                         </li>
                       )
                 })
