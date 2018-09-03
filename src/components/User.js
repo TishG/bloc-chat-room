@@ -23,12 +23,12 @@ class User extends Component {
       return (
         <section className="user-login">
           <button
-          className="sign-in"
+          className="sign-in-out"
           onClick={(e) => this.signIn()}>
             Sign in
           </button>
           <button
-          className="sign-out"
+          className="sign-in-out"
           onClick={(e) => this.signOut()}>
             Sign out
           </button>

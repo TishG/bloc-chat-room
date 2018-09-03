@@ -55,9 +55,10 @@ class RoomList extends Component {
                          className="room-name">
                           {room.name}
                           <button
-                          className="delete-room"
-                          type="button"
-                          onClick={() => this.deleteRoom(room.key)}>delete</button>
+                            className="delete-room"
+                            onClick={() => this.deleteRoom(room.key)}>
+                            delete
+                          </button>
                         </li>
                       )
                 })
@@ -65,10 +66,13 @@ class RoomList extends Component {
           </ul>
           <section
           className="new-room-form">
-             <input type="text"
+             <input
+             className="room-input"
+             type="text"
              value={this.state.newRoomName}
              onChange={(e) => this.handleChange(e.target.value)}/>
              <input
+             className="output-room"
              type="button"
              value="Add Room"
              onClick={(e) => this.createRoom(this.state.newRoomName)}/>

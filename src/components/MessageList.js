@@ -20,18 +20,24 @@ class MessageList extends Component {
 
     createMessage(e, newContent) {
         e.preventDefault();
+        if(newContent === " ") { return };
         if (!this.props.activeRoom || !newContent) { return };
         this.messagesRef.push({
           content: newContent,
           username: this.props.user ? this.props.user.displayName : " Guest",
           roomId: this.props.activeRoom.key,
           sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
-        });
-        this.setState({ newContent: " " })
+        }).orderByChild("sentAt");
+        this.setState({ newContent: " "})
     }
 
     handleMessage(input) {
       this.setState({ newContent: input });
+    }
+
+    deleteMessage(message, activeRoom) {
+      return this.props.firebase.database().ref('messages').child(message).remove();
+      window.location.reload(true);
     }
 
     logUsername(user, message) {
@@ -45,7 +51,7 @@ class MessageList extends Component {
     render() {
       return (
         <main className="message-room">
-        <h2>{this.props.activeRoom ? this.props.activeRoom.name : " "}</h2>
+        <h2 className="active-room">{this.props.activeRoom ? this.props.activeRoom.name : " "}</h2>
 
           <ul className="message-list">
             {
@@ -57,7 +63,13 @@ class MessageList extends Component {
                         <p>
                           <span>{ this.logUsername(this.props.user, message) }</span>
                         </p>
+                        <p>
                           {message.roomId === this.props.activeRoom.key ? message.content: " " }
+                          { message.roomId === this.props.activeRoom.key ?
+                            <button
+                            className="delete-message"
+                            onClick={() => this.deleteMessage(message.key)}>delete</button> : " " }
+                        </p>
                        </li>
                      )
                 })
@@ -65,10 +77,13 @@ class MessageList extends Component {
           </ul>
           <section
           className="new-message-form">
-             <input type="text"
+             <input
+             className="message-input"
+             type="text"
              value={this.state.newContent}
              onChange={(e) => this.handleMessage(e.target.value)}/>
              <input
+             className="output-message"
              type="button"
              value="Send"
              onClick={(e) => this.createMessage(e, this.state.newContent)}/>
