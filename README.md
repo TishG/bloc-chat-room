@@ -9,7 +9,7 @@ Users can:
 * Create rooms
 * Send messages
 
-Built using HTML, CSS, Bootstrap, and React
+Built using HTML, CSS, Bootstrap, React, and Firebase
 
 ## View
 
